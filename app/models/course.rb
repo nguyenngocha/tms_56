@@ -16,9 +16,16 @@ class Course < ActiveRecord::Base
   include PublicActivity::Model
   tracked owner: Proc.new{|controller, model| controller.current_user}
   
-  after_update :activity
+  after_update :create_course_activity
+  after_destroy :delete_course_activity
 
-  def activity
+  def delete_course_activity
+    PublicActivity::Activity.course(self).each do |activity|
+      activity.destroy!
+    end
+  end
+
+  def create_course_activity
     if started?
       create_activity key: I18n.t("activity.started"), recipient: self
       users.each do |user|

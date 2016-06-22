@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
   scope :not_add_course, ->course_id {where "id not in (select user_id
     from user_courses where course_id = ?)", course_id}
 
+  after_destroy :destroy_activities
+
   include PublicActivity::Model
   tracked
 
@@ -42,5 +44,11 @@ class User < ActiveRecord::Base
 
   def password_required?
     new_record? ? super : false
+  end
+
+  def destroy_activities
+    PublicActivity::Activity.user(self).each do |activity|
+      activity.destroy!
+    end 
   end
 end
