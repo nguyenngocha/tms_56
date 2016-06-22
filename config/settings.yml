@@ -16,3 +16,6 @@ subjects:
 activity:
   course: "Course"
   course_subject: "CourseSubject"
+  per_page: 5
+  all: "all_activities"
+  my: "my_activities"

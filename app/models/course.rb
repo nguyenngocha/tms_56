@@ -14,7 +14,7 @@ class Course < ActiveRecord::Base
   enum status: {ready: 0, started: 1, finished: 2}
 
   include PublicActivity::Model
-  tracked
+  tracked owner: Proc.new{|controller, model| controller.current_user}
   
   after_update :activity
 

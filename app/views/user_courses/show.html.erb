@@ -55,7 +55,16 @@
               <%= activity.trackable.content %>
             </li>
           <% end %>
+          <%= paginate @activities %>
         <% end %>
+        <hr/>
+        <div class="text-center">
+          <%= link_to user_course_path @user_course, action_type: @bottom do %>
+            <div class="btn btn-primary">
+              <%= @bottom %>
+            </div>
+          <% end %>
+        </div>
       </ul>
     </div>
   </div>
