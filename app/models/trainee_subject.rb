@@ -14,6 +14,9 @@ class TraineeSubject < ActiveRecord::Base
   accepts_nested_attributes_for :trainee_tasks, 
     reject_if: proc{|a| a[:task_id] == "0"}
 
+  include PublicActivity::Model
+  tracked owner: Proc.new{|controller, model| controller.current_user}
+
   def update_status
     task_count = tasks.count
     trainee_task_count = trainee_tasks.count
@@ -24,6 +27,8 @@ class TraineeSubject < ActiveRecord::Base
         started!
       elsif trainee_task_count >= task_count
         finished!
+        create_activity key: I18n.t("activity.finished"), 
+          recipient: user_course.course
       end
     end
   end

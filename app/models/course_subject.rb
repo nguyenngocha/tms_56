@@ -32,15 +32,15 @@ class CourseSubject < ActiveRecord::Base
   
   def create_subject_activity
     if started?
-      create_activity key: I18n.t("activity.subject.started"), recipient: course
+      create_activity key: I18n.t("activity.started"), recipient: course
       course.users.each do |user|
-        create_activity key: I18n.t("activity.subject.started"),
+        create_activity key: I18n.t("activity.started"),
           owner: user, recipient: course
       end
     elsif finished?
-      create_activity key: I18n.t("activity.subject.finished"), recipient: course
+      create_activity key: I18n.t("activity.finished"), recipient: course
       course.users.each do |user|
-        create_activity key: I18n.t("activity.subject.finished"),
+        create_activity key: I18n.t("activity.finished"),
           owner: user, recipient: course
       end
     end
