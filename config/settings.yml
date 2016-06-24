@@ -15,7 +15,9 @@ subjects:
   per_page: 5
 activity:
   course: "Course"
-  course_subject: "CourseSubject"
+  subject: "Subject"
+  task: "Task"
+  user: "User"
   per_page: 5
   all_activities: "all_activities"
   my_activities: "my_activities"

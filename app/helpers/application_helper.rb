@@ -21,12 +21,4 @@ module ApplicationHelper
     link_to name, "#", class: "add_fields",
       data: {id: id, fields: fields.gsub("\n", "")}
   end
-
-  def is_course? class_name
-    class_name == Settings.activity.course
-  end
-
-  def is_course_subject? class_name
-    class_name == Settings.activity.course_subject
-  end
 end
