@@ -211,6 +211,12 @@ en:
     thanks: "Thanks for joining and have a great day!"
     blank: "=============================="
     will_finish: "Course %{content} is finishing in 2 days"
+    mail_month: "mail for course's infomation"
+    user: "User: "
+    course: "Course: %{content}"
+    subject: "Subject: "
+    description: "Description: %{content}"
+    status: "Status: "
 
   search:
     courses:
