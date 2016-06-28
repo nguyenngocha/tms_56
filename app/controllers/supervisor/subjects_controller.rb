@@ -14,8 +14,10 @@ class Supervisor::SubjectsController < ApplicationController
   end
 
   def create
-    params[:subject][:tasks_attributes].each do |_, value|
-      @subject.tasks.build
+    if params[:subject] && params[:subject][:tasks_attributes]
+      params[:subject][:tasks_attributes].each do |_, value|
+        @subject.tasks.build
+      end
     end
     if @subject_form.validate params[:subject].permit!
       @subject_form.save

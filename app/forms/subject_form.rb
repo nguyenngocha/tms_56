@@ -34,12 +34,13 @@ class SubjectForm < Reform::Form
       tasks.reject! {|i| task_ids_to_rm.include? i._destroy}
       if model.persisted?
         task_ids_to_rm = attrs[:tasks].select(&destroy).map {|i| i[:id]}
-        Task.destroy task_ids_to_rm
+        if task_ids_to_rm.any?
+          Task.destroy task_ids_to_rm
+        end
         tasks.reject! {|i| task_ids_to_rm.include? i.id}
       end
       tasks.reject! {|i| i.content.blank? && i.description.blank?}
     end
-
     super
   end
 end

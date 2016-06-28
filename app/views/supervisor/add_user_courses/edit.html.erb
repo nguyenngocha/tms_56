@@ -32,8 +32,15 @@
       <hr/>
       <%= form_for @course,
         url: supervisor_course_add_user_courses_path(@course) do |f| %>
-        <%= f.collection_check_boxes :user_ids, @users, :id, :name do |b| %>
+        <%= f.collection_check_boxes :user_ids, @users_not_in_course, :id, :name do |b| %>
           <div class="col-md-offset-1 ">
+            <%= b.label do %>
+              <%= b.check_box + " " + b.text %>
+            <% end %>
+          </div>
+        <% end %>
+        <%= f.collection_check_boxes :user_ids, @users_in_course, :id, :name do |b| %>
+          <div class="col-md-offset-1 hidden">
             <%= b.label do %>
               <%= b.check_box + " " + b.text %>
             <% end %>

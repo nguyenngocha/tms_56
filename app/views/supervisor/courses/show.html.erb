@@ -101,7 +101,7 @@
           <% @course.user_courses.each do |user_course| %>
             <div class="input-group fields">
               <div class="form-control">
-                <span><%= link_to user_course.user.name, "#" %></span>
+                <span><%= link_to user_course.user.name, user_path(user_course.user) %></span>
               </div>
               <span class="input-group-addon">
                 <% if @course.ready? %>

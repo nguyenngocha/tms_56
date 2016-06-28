@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }
+  require "sidekiq/web"
+  authenticate :user, ->u{u.supervisor?} do
+    mount Sidekiq::Web => "/sidekiq"
+  end
 
   root "static_pages#home"
 

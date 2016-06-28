@@ -58,10 +58,14 @@
           <hr/>
         </ul>
         <div class="text-center">
-          <div>
-            <%= paginate @activities,
-              window: Settings.activity.pagination.window %>
-          </div>
+          <div><%= paginate @activities,
+            window: Settings.activity.pagination.window %></div>
+          <%= link_to trainee_subject_path @trainee_subject, action_type: @bottom do %>
+            <div class="btn btn-primary">
+              <%= (@bottom == Settings.activity.my_activities) ?
+                t("activity.my_activities") : t("activity.all_activities") %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

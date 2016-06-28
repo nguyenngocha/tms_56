@@ -35,7 +35,10 @@ class CourseSubject < ActiveRecord::Base
   end
 
   def create_subject_activity
-    started? ? (create_activities I18n.t("activity.started")) :
+    if started?
+      (create_activities I18n.t("activity.started"))
+    elsif finished?
       (create_activities I18n.t("activity.finished"))
+    end
   end
 end

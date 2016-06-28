@@ -30,5 +30,5 @@ trainee_subjects:
 user_courses:
   zero: 0
   all: 100
-mail_from: "admin@example.com"
+mail_from: "dodaihoc.abvk@gmail.com"
 layout: "mailer"

@@ -11,8 +11,21 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
+
+  config.action_mailer.default_url_options = { :host => "https://sleepy-beach-56569.herokuapp.com" }
   config.action_controller.perform_caching = true
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.raise_delivery_errors = true
+  ActionMailer::Base.smtp_settings = {
+  :address            => "smtp.gmail.com",
+  :port               => 587,
+  :domain             => "gmail.com",
+  :authentication     => :plain,
+  :user_name          => "dodaihoc.abvk@gmail.com",
+  :password           => "01646236194"
+}
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.

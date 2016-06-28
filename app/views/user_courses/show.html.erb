@@ -3,8 +3,11 @@
   <div class="col-md-12">
     <div class="panel panel-default text-center">
       <div class="panel-heading">
-        <h3><%= @user_course.course.content %></h3><hr>
+        <h3><%= @user_course.course.content %></h3>
         <%= @user_course.course.description %><hr>
+        Start date: <%= @user_course.course.start_date.to_date %><br>
+        End date: <%= @user_course.course.end_date.to_date %>
+        <hr>
         <%= t "user_courses.status" %>
         <%= render "shared/status_label", label: @user_course.status %>
       </div>

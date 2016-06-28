@@ -3,7 +3,8 @@ class Supervisor::AddUserCoursesController < ApplicationController
 
   def edit
     @user_courses = @course.user_courses
-    @users = User.all
+    @users_not_in_course = User.not_add_course @course
+    @users_in_course = @user_courses.collect {|user_course| user_course.user}
   end
 
   def update
