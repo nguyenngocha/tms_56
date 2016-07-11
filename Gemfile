@@ -19,6 +19,9 @@ gem "reform-rails"
 gem "public_activity"
 gem "sidekiq"
 gem "ransack"
+gem "sinatra", require: false
+gem "letter_opener"
+gem "launchy"
 
 group :development, :test do
   gem "byebug"
