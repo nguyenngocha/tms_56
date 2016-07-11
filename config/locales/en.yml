@@ -135,14 +135,14 @@ en:
     course_finished: "This course has been closed by a supervisor"
     finish_task_success: "Finished task successfully"
     finish_task_error: "Failed to finish task"
-    
+
   object_not_found: "%{object} with id %{id} not found"
-  
+
   not_authorized: "You are not authorized to access this page"
 
   warning:
     delete: "Are you sure?"
-    
+
   following: "following"
   followers: "followers"
 
@@ -173,8 +173,8 @@ en:
     destroy_success: "Successfully destroy subject"
     destroy_fail: "Failed destroy subject"
     view_subject: "View"
-  
-  task: 
+
+  task:
     content: "content"
     description: "description"
     add_more_task: "Add more Task"
@@ -184,7 +184,7 @@ en:
   not_learn: "Not Learned"
   learning: "Learning"
   finish: "Finish"
-  
+
   activity:
     following: "followed"
     unfollow: "unfollowed"
@@ -202,7 +202,7 @@ en:
     at: "at"
     created: "Created"
 
-  mail: 
+  mail:
     assign: "Assigned to a course %{content}"
     delete: "Removed from a course %{content}"
     welcome: "Hello, %{name}"
@@ -210,6 +210,13 @@ en:
     delete_from_course: "You had been delete in course %{content}"
     thanks: "Thanks for joining and have a great day!"
     blank: "=============================="
+    will_finish: "Course %{content} is finishing in 2 days"
+    mail_month: "mail for course's infomation"
+    user: "User: "
+    course: "Course: %{content}"
+    subject: "Subject: "
+    description: "Description: %{content}"
+    status: "Status: "
 
   search:
     courses:

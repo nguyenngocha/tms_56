@@ -22,6 +22,8 @@ gem "ransack"
 gem "sinatra", require: false
 gem "letter_opener"
 gem "launchy"
+gem "whenever"
+gem "daemons"
 
 group :development, :test do
   gem "byebug"
