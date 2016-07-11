@@ -18,4 +18,13 @@ class UserMailer < ApplicationMailer
     @user = @course.user
     mail to: @user.email, subject: t("mail.will_finish", content: course.content)
   end
+
+  def mail_month
+    Course.all.each do |course|
+      @supervisor = course.user
+      @trainees = course.users
+      @course = course
+      mail to: @supervisor.email, subject: t("mail.mail_month", content: @course.content)
+    end
+  end
 end
