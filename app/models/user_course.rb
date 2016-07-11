@@ -7,7 +7,7 @@ class UserCourse < ActiveRecord::Base
   enum status: {ready: 0, started: 1, finished: 2}
 
   scope :load_course, ->course{find_by course_id: course}
-  
+
   after_save :create_trainee_subject
   after_create :send_mail_assign
   before_destroy :send_mail_delete
@@ -27,11 +27,13 @@ class UserCourse < ActiveRecord::Base
 
   private
   def send_mail_assign
-    UserMailer.assign_to_course(user, course).deliver_later
+    TraineeWorker.perform_async TraineeWorker::ASSIGN_TRAINEE,
+      self.user_id, self.course_id
   end
 
   def send_mail_delete
-    UserMailer.delete_from_course(user, course).deliver_later
+    TraineeWorker.perform_async TraineeWorker::DELETE_TRAINEE,
+      self.user_id, self.course_id
   end
 
   def create_trainee_subject
